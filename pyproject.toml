@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "framebench"
+version = "0.1.0"
+description = "Offline binary session replay workbench for network device teams"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+include = ["framebench*"]
+
+[tool.setuptools.package-data]
+framebench = ["web/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

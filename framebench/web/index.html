@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>framebench — 二进制会话复盘工作台</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>framebench</h1>
+  <span class="sub">离线二进制会话复盘工作台</span>
+  <span id="health" class="pill">…</span>
+</header>
+
+<main>
+  <section class="panel" id="left">
+    <h2>捕获与分支</h2>
+    <div class="row">
+      <input id="capName" placeholder="捕获名称" value="uplink-session">
+      <button id="btnSample">载入示例</button>
+    </div>
+    <textarea id="capInput" rows="6" placeholder='粘贴 JSONL：{"ts":..., "dir":"c2s", "data":"hex"}'></textarea>
+    <div class="row">
+      <select id="protoSel"></select>
+      <button id="btnUpload">上传并分析</button>
+    </div>
+    <h3>捕获</h3>
+    <ul id="capList" class="list"></ul>
+    <h3>分支</h3>
+    <ul id="branchList" class="list"></ul>
+    <div class="row">
+      <button id="btnCompare">比较选中两分支</button>
+      <button id="btnExport">导出当前分支</button>
+    </div>
+    <div id="diffOut"></div>
+  </section>
+
+  <section class="panel" id="center">
+    <h2>帧状态</h2>
+    <div id="statusCols">
+      <div class="col pending"><h4>待确认</h4><div id="colPending"></div></div>
+      <div class="col accepted"><h4>已接受</h4><div id="colAccepted"></div></div>
+      <div class="col rejected"><h4>被拒绝</h4><div id="colRejected"></div></div>
+      <div class="col recovering"><h4>恢复中</h4><div id="colRecovering"></div></div>
+    </div>
+    <h2>事件流 <span id="runMeta" class="sub"></span></h2>
+    <div id="events"></div>
+  </section>
+
+  <section class="panel" id="right">
+    <h2>诊断与字节区间</h2>
+    <div id="diagList" class="diag"></div>
+    <h2>十六进制视图</h2>
+    <div id="hexview" class="hex"></div>
+    <h2>状态迁移</h2>
+    <div id="states"></div>
+    <h2>分支操作</h2>
+    <div class="row">
+      <select id="opKind">
+        <option value="mask_frame">屏蔽帧</option>
+        <option value="retime">改到达时间</option>
+        <option value="replace_payload">替换 payload</option>
+      </select>
+      <input id="opRecord" type="number" placeholder="记录号" style="width:5em">
+      <input id="opValue" placeholder="ts 或 hex" style="width:9em">
+      <button id="btnOp">应用为新分支</button>
+    </div>
+    <div class="row">
+      <select id="migrateTo"></select>
+      <button id="btnMigrate">迁移协议版本</button>
+    </div>
+    <div id="migrateOut"></div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
