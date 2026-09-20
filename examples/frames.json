@@ -1,0 +1,67 @@
+{
+ "frames": [
+  {
+   "id": "f1",
+   "session": "sess-1",
+   "ts": 1.0,
+   "dir": "c2s",
+   "data": "fb0100000000000fe8beb9e7bc98e88a82e782b92dceb189d6"
+  },
+  {
+   "id": "f2",
+   "session": "sess-1",
+   "ts": 1.1,
+   "dir": "s2c",
+   "data": "fb010100000000040102030487d6"
+  },
+  {
+   "id": "f3",
+   "session": "sess-1",
+   "ts": 1.2,
+   "dir": "c2s",
+   "data": "fb010200000100020908ba2c"
+  },
+  {
+   "id": "f4",
+   "session": "sess-1",
+   "ts": 1.3,
+   "dir": "s2c",
+   "data": "fb01030000010000ebad"
+  },
+  {
+   "id": "f5",
+   "session": "sess-1",
+   "ts": 1.4,
+   "dir": "c2s",
+   "data": "fb0104000002000470696e675bad"
+  },
+  {
+   "id": "f6",
+   "session": "sess-1",
+   "ts": 1.5,
+   "dir": "c2s",
+   "data": "fb01050000030000082c"
+  },
+  {
+   "id": "g1",
+   "session": "sess-2",
+   "ts": 2.0,
+   "dir": "c2s",
+   "data": "fb01000000000008e5aea2e688b7e7ab0857"
+  },
+  {
+   "id": "g2",
+   "session": "sess-2",
+   "ts": 2.1,
+   "dir": "s2c",
+   "data": "fb01010000000002aabb079d"
+  },
+  {
+   "id": "g3",
+   "session": "sess-2",
+   "ts": 2.2,
+   "dir": "c2s",
+   "data": "fb010400000100056e906973655104"
+  }
+ ]
+}

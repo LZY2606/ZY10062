@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>framebench · 二进制会话复盘工作台</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <h1>framebench</h1>
+  <span class="sub">离线二进制会话复盘工作台</span>
+  <span id="store-status" class="pill">…</span>
+</header>
+
+<main>
+  <section class="panel" id="captures-panel">
+    <h2>捕获</h2>
+    <div class="row">
+      <input id="cap-name" placeholder="捕获名称">
+      <select id="cap-protocol"></select>
+      <button id="cap-create">新建捕获</button>
+    </div>
+    <div class="row">
+      <textarea id="frames-json" rows="4"
+        placeholder='粘贴 {"frames":[{id,session,ts,dir,data(hex)}…]}，或用 gen-example 生成'></textarea>
+    </div>
+    <div class="row">
+      <input id="idem-key" placeholder="幂等键（重试时保持不变）">
+      <button id="frames-upload">上传帧</button>
+      <button id="gen-example">填入示例</button>
+      <span id="upload-result"></span>
+    </div>
+    <ul id="capture-list" class="list"></ul>
+  </section>
+
+  <section class="panel" id="detail-panel" hidden>
+    <h2 id="cap-title">捕获详情</h2>
+    <div class="row">
+      <span id="cap-digest" class="mono"></span>
+      <button id="export-btn">导出离线重放包</button>
+    </div>
+
+    <h3>会话状态</h3>
+    <div id="session-board">
+      <div class="col" data-status="pending"><h4>待确认</h4><ul></ul></div>
+      <div class="col" data-status="accepted"><h4>已接受</h4><ul></ul></div>
+      <div class="col" data-status="rejected"><h4>被拒绝</h4><ul></ul></div>
+      <div class="col" data-status="recovering"><h4>恢复中</h4><ul></ul></div>
+    </div>
+
+    <div id="grid">
+      <div>
+        <h3>事件流</h3>
+        <div id="events" class="scroll"></div>
+      </div>
+      <div>
+        <h3>诊断（按优先级）</h3>
+        <div id="diagnostics" class="scroll"></div>
+        <h3>状态迁移</h3>
+        <div id="transitions" class="scroll"></div>
+      </div>
+      <div>
+        <h3>十六进制 <span id="hex-title" class="mono"></span></h3>
+        <div class="row">
+          <select id="frame-select"></select>
+        </div>
+        <pre id="hex-view" class="mono scroll"></pre>
+      </div>
+    </div>
+
+    <h3>分支</h3>
+    <div class="row">
+      <input id="branch-name" placeholder="分支名称">
+      <span>锚点事件 <span id="branch-anchor" class="mono">（先在事件流中点选）</span></span>
+      <button id="branch-create">在此事件建分支</button>
+    </div>
+    <ul id="branch-list" class="list"></ul>
+    <div id="branch-detail" hidden>
+      <h4 id="branch-title"></h4>
+      <div class="row">
+        <select id="mutation-type">
+          <option value="mask_frame">屏蔽帧</option>
+          <option value="retime">改变到达时间</option>
+          <option value="replace_payload">替换 payload</option>
+        </select>
+        <input id="mutation-frame" placeholder="帧 ID">
+        <input id="mutation-arg1" placeholder="ts 或 offset">
+        <input id="mutation-arg2" placeholder="hex（替换内容）">
+        <button id="mutation-add">追加变更</button>
+      </div>
+      <ul id="mutation-list" class="list"></ul>
+      <div class="row">
+        <button id="diff-btn">与基线比较</button>
+        <select id="migrate-version"></select>
+        <button id="migrate-btn">迁移协议版本</button>
+        <label><input type="checkbox" id="migrate-force"> 强制</label>
+      </div>
+      <pre id="branch-result" class="mono scroll"></pre>
+      <h4>分支事件流</h4>
+      <div id="branch-events" class="scroll"></div>
+    </div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

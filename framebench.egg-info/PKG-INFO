@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: framebench
+Version: 0.1.0
+Summary: Offline binary session replay workbench for network teams
+Requires-Python: >=3.9
+Provides-Extra: test
+Requires-Dist: pytest>=7; extra == "test"
